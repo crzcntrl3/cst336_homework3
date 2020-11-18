@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Rick & Morty API </title>
-        <link rel="stylesheet" href="css/styles.css" />
-    </head>
-    <body>
-      <div class="wrapper">
-        <div class="container">
-          <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
-            <div class="container"><a class ="navbar-brand" href="#">
-              <img src="https://www.firstcomicsnews.com/wp-content/uploads/2017/09/Rick-and-Morty-logo-600x257.png" class="image-logo-crc" alt="">
-            </a>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title> Rick & Morty API search</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+          <div class="container"><a class ="navbar-brand" href="#">
+            <img src="https://www.firstcomicsnews.com/wp-content/uploads/2017/09/Rick-and-Morty-logo-600x257.png" class="image-logo-crc" alt="">
+          </a>
             <span class="navbar-toggler-icon"></span></button>
               <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav"></ul>
@@ -35,16 +37,15 @@
             </div>
           </div>
       </div>
-      <script src="js/main.js"></script>
-      
-      <footer>
-        <br />
-        CST336 Internet Programming. 2020&copy; Cruz <br />
-        <strong>Disclaimer:</strong> The information in this webpage is fictitious.<br />
-        It is used for academic purposes only.
-        <figure>
-            <img src="img/CSUMB_Logo_Black.png" alt="CSUMB Logo" class="footer-logo" />
-        </figure>
-      </footer>
-    </body>
+    <script src="js/main.js"></script>
+    <footer>
+      <br />
+      CST336 Internet Programming. 2020&copy; Cruz <br />
+      <strong>Disclaimer:</strong> The information in this webpage is fictitious.<br />
+      It is used for academic purposes only.
+      <figure>
+        <img src="img/CSUMB_Logo_Black.png" alt="CSUMB Logo" class="footer-logo" />
+      </figure>
+    </footer>
+  </body>
 </html>
