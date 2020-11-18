@@ -1,55 +1,53 @@
 /*global fetch*/
 window.addEventListener("DOMContentLoaded", () => {
-  const search = document.querySelector(".search-field"),
-    searchOutput = document.querySelector(".search-output");
+    const search = document.querySelector(".search-field"),
+        searchOutput = document.querySelector(".search-output");
+    
+    let searchTerm = "",
+        output = "";
+        
+    search.addEventListener(
+        "keyup",
+        debounce(() => {
+            searchOutput.innerHTML = "";
 
-  let searchTerm = "",
-    output = "";
+            output = "";
 
-  search.addEventListener(
-    "keyup",
-    debounce(() => {
-      searchOutput.innerHTML = "";
+            searchTerm = search.value.replace(" ", "+");
 
-      output = "";
-
-      searchTerm = search.value.replace(" ", "+");
-
-      fetch(`https://rickandmortyapi.com/api/character/?name=${searchTerm}`)
-        .then((res) => res.json())
-        .then((data) => {
-          let characters = data.results;
-
-          const totalPages = data.info.pages;
-
-          if (totalPages > 1) {
-            for (var i = 2; i <= totalPages; i++) {
-              let page = i;
-              fetch(
-                `https://rickandmortyapi.com/api/character/?page=${i}&name=${searchTerm}`
-              )
+            fetch(`https://rickandmortyapi.com/api/character/?name=${searchTerm}`)
                 .then((res) => res.json())
                 .then((data) => {
-                  characters = characters.concat(data.results);
+                    let characters = data.results;
 
-                  if (page === totalPages) {
-                    displayCharacters(characters);
-                  }
+                    const totalPages = data.info.pages;
+
+                    if (totalPages > 1) {
+                        for (var i = 2; i <= totalPages; i++) {
+                            let page = i;
+                            fetch(`https://rickandmortyapi.com/api/character/?page=${i}&name=${searchTerm}`)
+                                .then((res) => res.json())
+                                .then((data) => {
+                                    characters = characters.concat(data.results);
+
+                                    if (page === totalPages) {
+                                        displayCharacters(characters);
+                                    }
+                                });
+                        }
+                    } else {
+                        displayCharacters(characters);
+                    }
+                })
+                .catch((error) => {
+                    searchOutput.innerHTML = `<p class="no-results">No Results Found</p>`;
                 });
-            }
-          } else {
-            displayCharacters(characters);
-          }
-        })
-        .catch((err) => {
-          searchOutput.innerHTML = `<p class="no-results">No Results Found</p>`;
-        });
-    })
-  );
+            })
+    );
 
   function displayCharacters(characters) {
     characters.forEach((character) => {
-      output += `<div class="col-lg-3">
+        output += `<div class="col-lg-3">
     <div class="card-group">
         <div class="card card-singel-carc"><div class="card-image-crc"><img src="${character.image}" alt="${character.name}" class="img-fluid rep-image" />
     <div class="header-top">
@@ -66,7 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
                                 <th>Column 2</th>
                             </tr>
                         </thead>
-                         <tbody>
+                        <tbody>
                     <tr>
                         <td class="first-crc-stat table-text-crc">Status</td>
                         <td class="table-text-crc">${character.status}</td>
@@ -99,18 +97,18 @@ window.addEventListener("DOMContentLoaded", () => {
     //Output results
     searchOutput.innerHTML = output;
   }
-
+  
   function debounce(func, wait = 800, immediate) {
-    let timeout;
+      let timeout;
+      
+      return () => {
+        const context = this,
+            args = arguments;
+        
+        clearTimeout(timeout);
 
-    return () => {
-      const context = this,
-        args = arguments;
-
-      clearTimeout(timeout);
-
-      timeout = setTimeout(() => {
-        timeout = null;
+        timeout = setTimeout(() => {
+            timeout = null;
         if (!immediate) func.apply(context, args);
       }, wait);
 

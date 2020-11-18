@@ -127,7 +127,7 @@ body,footer{
   animation: spin 400ms linear infinite;
 }
 
-.serach-btn {
+.search-btn {
   background-color: rgb(233, 236, 239);
   border: 1px solid #ced4da;
 }
@@ -197,8 +197,7 @@ body,footer{
   height: auto;
 }
 
-.h2,
-h2 {
+.h2,h2 {
   font-size: 22px;
   font-weight: 400;
   font-stretch: expanded;
@@ -240,11 +239,11 @@ h2 {
 @keyframes textShadow {
   from {
     text-shadow: 0.02em 0.02em 0.02em #7ffa67,
-            -0.02em -0.02em 0.02em #7ffa67,        0 0 0.2em #7ffa67;
+            -0.02em -0.02em 0.02em #7ffa67, 0 0 0.2em #7ffa67;
   }
   to {
     text-shadow: 0.02em 0.02em 0.02em #7ffa67,
-            -0.02em -0.02em 0.02em #7ffa67,       0 0 0.02em #7ffa67;
+            -0.02em -0.02em 0.02em #7ffa67, 0 0 0.02em #7ffa67;
   }
 }
 
